@@ -180,7 +180,7 @@
                 $("#tempid").text(tempval+"℃");
                 // 显示湿度
                 $("#humiid").text(msgjson.dht11_humidity+'%');
-                // 温度超过29则红灯亮，20-29之间则绿灯亮，低于20黄灯亮
+                // 温度超过35则红灯亮，28-35之间则绿灯亮，低于28黄灯亮
                 if(tempval > "35"){
                     led_red();
                     $("#rgbimgid").attr("src", "./image/02-red.svg");
