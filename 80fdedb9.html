@@ -118,8 +118,8 @@
         </div></td>
   </tr>
   <tr>
-    <td colspan="4"><div align="center"><img id="switchbtn2" src="./image/03-turn-on.svg" alt=""><br/>
-            <span id="switchspan2">开</span></div></td>
+    <td colspan="4"><div align="center"><img id="switchbtn" src="./image/03-turn-on.svg" alt=""><br/>
+            <span id="switchspan">开</span></div></td>
   </tr>
 </table>
 <script>// 从url中获取某个参数的值
@@ -231,23 +231,7 @@
             }
             client.publish(topic, commond);
         });
-
-        $("#switchbtn2").click(function() {
-            var topic = device_id+'/in';
-            var commond;
-            var swtimg = $("#switchbtn2").attr("src");
-            if("./image/03-turn-on.svg" == swtimg){
-                commond = '{"device_switch":false}';
-                $("#switchbtn2").attr("src", "./image/03-turn-off.svg");
-                $("#switchspan2").text("关");
-            }else{
-                commond = '{"device_switch":true}';
-                $("#switchbtn2").attr("src", "./image/03-turn-on.svg");
-                $("#switchspan2").text("开");
-            }
-            client.publish(topic, commond);
-        });
-		
+	
         function led_red() {
             var topic = device_id+'/in';
             var commond = '{"rgbled_switch":true,"rgbled_hues":0, "rgbled_saturation":100, "rgbled_brightness":100}'; 
