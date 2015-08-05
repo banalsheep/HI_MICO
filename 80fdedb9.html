@@ -90,7 +90,8 @@
         <div class="switrgbhow">
             <table width="100%">
                 <tr align="center" height="114px">
-                    <td valign="middle"><img id="switchbtn" src="./image/03-turn-on.svg" alt=""><br/><span id="switchspan">开</span></td>
+                    <td valign="middle"><img src="./image/03-turn-on.svg" alt="" name="switchbtn" id="switchbtn"><br/>
+                  <span id="switchspan">开</span></td>
                     <!-- <td valign="middle"><hr class="hrline" size="80" /></td> -->
                   <td valign="middle"><img id="rgbimgid" src="./image/02-red.svg" alt=""><br/><span>温度超限<br>
                     &gt;35红/28-35黄/&lt;28绿</span></td>
@@ -132,7 +133,7 @@
   </tr>
   <tr>
     <td colspan="4"><div align="center"><img id="switchbtn2" src="./image/03-turn-on.svg" alt=""><br/>
-        <span id="switchspan">开</span></div></td>
+        <span id="switchspan2">开</span></div></td>
   </tr>
 </table>
 <script>// 从url中获取某个参数的值
@@ -245,6 +246,22 @@
             client.publish(topic, commond);
         });
 
+        $("#switchbtn2").click(function() {
+            var topic = device_id+'/in';
+            var commond;
+            var swtimg = $("#switchbtn2").attr("src");
+            if("./image/03-turn-on.svg" == swtimg){
+                commond = '{"device_switch":false}';
+                $("#switchbtn2").attr("src", "./image/03-turn-off.svg");
+                $("#switchspan2").text("关");
+            }else{
+                commond = '{"device_switch":true}';
+                $("#switchbtn2").attr("src", "./image/03-turn-on.svg");
+                $("#switchspan2").text("开");
+            }
+            client.publish(topic, commond);
+        });
+		
         function led_red() {
             var topic = device_id+'/in';
             var commond = '{"rgbled_switch":true,"rgbled_hues":0, "rgbled_saturation":100, "rgbled_brightness":100}'; 
