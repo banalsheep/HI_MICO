@@ -102,7 +102,7 @@
     <td valign="middle" align="center"><div align="center"><img src="./image/04-lux.svg" alt="" width="60" height="60"></div></td>
     <td valign="middle" align="center">&nbsp;&nbsp;
       <div align="center"><span>光照度</span><br/>
-      <span class="tempcls" id="luxid">99Lux </span></div></td>
+      <span class="luxcls" id="luxid">99Lux </span></div></td>
     <td valign="middle" align="right"><div align="center"><img src="./image/02-red.svg" alt="" name="rgbimgid" width="60" height="60" id="rgbimgid"><br/>
       <span><br>
       </span></div></td>
@@ -209,7 +209,8 @@
                 // 显示光照度
                 $("#luxid").text(msgjson.LightSensorVal+'Lux');
                 // 显示温度
-                $("#tempid").text(tempval+"℃");
+				$("#tempid").text(msgjson.dht11_temperature+"℃");
+                //$("#tempid").text(tempval+"℃");
                 // 显示湿度
                 $("#humiid").text(msgjson.dht11_humidity+'%');
                 // 温度超过35则红灯亮，28-35之间则绿灯亮，低于28黄灯亮
